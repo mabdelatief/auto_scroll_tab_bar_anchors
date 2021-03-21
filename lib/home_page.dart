@@ -53,18 +53,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ScrollController scrollController;
   TabController _tabController;
   TabController _topTabController;
-  TabController _menuTabController;
-  double overHeight;
-  double menuHeight;
-  double contactHeight;
-  double reviewsHeight;
-  bool pinMenu = false;
-  int menuIndex = 0;
-  List<String> imgs = [
-    "assets/rest1.jpg",
-    "assets/rest10.jpg",
-    "assets/rest11.jpg"
-  ];
+  double greenHeight;
+  double blueHeight;
+  double orangeHeight;
+  double yellowHeight;
 
   @override
   void initState() {
@@ -72,74 +64,61 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
     scrollController = ScrollController();
     _tabController = new TabController(length: 4, vsync: this);
-    _menuTabController = new TabController(length: 4, vsync: this);
     _topTabController =
     new TabController(length: 4, vsync: this);
-    // _topTabController.index =
-    //     0;
     addScrollControllerListener();
   }
 
   void addScrollControllerListener(){
     scrollController.addListener(() {
       if (greenKey.currentContext != null) {
-        overHeight = greenKey.currentContext.size.height;
+        greenHeight = greenKey.currentContext.size.height;
       }
       if (blueKey.currentContext != null) {
-        menuHeight = blueKey.currentContext.size.height;
+        blueHeight = blueKey.currentContext.size.height;
       }
       if (orangeKey.currentContext != null) {
-        contactHeight = orangeKey.currentContext.size.height;
+        orangeHeight = orangeKey.currentContext.size.height;
       }
       if (yellowKey.currentContext != null) {
-        reviewsHeight = yellowKey.currentContext.size.height;
+        yellowHeight = yellowKey.currentContext.size.height;
       }
-      if (scrollController.offset > overHeight + 200 &&
-          scrollController.offset < menuHeight + overHeight + 200) {
-        if (pinMenu == false) {
-          setState(() {
-            pinMenu = true;
-          });
-        }
+      if (scrollController.offset > greenHeight + 200 &&
+          scrollController.offset < blueHeight + greenHeight + 200) {
       } else {
-        if (pinMenu) {
-          setState(() {
-            pinMenu = false;
-          });
-        }
       }
       if (scrollController.position.userScrollDirection ==
           ScrollDirection.reverse) {
         if (scrollController.offset > 0 &&
-            scrollController.offset < overHeight + 200) {
+            scrollController.offset < greenHeight + 200) {
           _tabController.animateTo(0);
-        } else if (scrollController.offset > overHeight + 200 &&
-            scrollController.offset < menuHeight + overHeight + 200) {
+        } else if (scrollController.offset > greenHeight + 200 &&
+            scrollController.offset < blueHeight + greenHeight + 200) {
           _tabController.animateTo(1);
-        } else if (scrollController.offset > menuHeight + overHeight + 200 &&
+        } else if (scrollController.offset > blueHeight + greenHeight + 200 &&
             scrollController.offset <
-                menuHeight + overHeight + contactHeight + 200) {
+                blueHeight + greenHeight + orangeHeight + 200) {
           _tabController.animateTo(2);
         } else if (scrollController.offset >
-            menuHeight + overHeight + contactHeight + 200 &&
+            blueHeight + greenHeight + orangeHeight + 200 &&
             scrollController.offset <=
-                menuHeight + overHeight + contactHeight + reviewsHeight + 200) {
+                blueHeight + greenHeight + orangeHeight + yellowHeight + 200) {
           _tabController.animateTo(3);
         } else {}
       } else if (scrollController.position.userScrollDirection ==
           ScrollDirection.forward) {
-        if (scrollController.offset < overHeight) {
+        if (scrollController.offset < greenHeight) {
           _tabController.animateTo(0);
-        } else if (scrollController.offset > overHeight &&
-            scrollController.offset < menuHeight + overHeight) {
+        } else if (scrollController.offset > greenHeight &&
+            scrollController.offset < blueHeight + greenHeight) {
           _tabController.animateTo(1);
-        } else if (scrollController.offset > menuHeight + overHeight &&
-            scrollController.offset < menuHeight + overHeight + contactHeight) {
+        } else if (scrollController.offset > blueHeight + greenHeight &&
+            scrollController.offset < blueHeight + greenHeight + orangeHeight) {
           _tabController.animateTo(2);
         } else if (scrollController.offset >
-            menuHeight + overHeight + contactHeight &&
+            blueHeight + greenHeight + orangeHeight &&
             scrollController.offset <
-                menuHeight + overHeight + contactHeight + reviewsHeight) {
+                blueHeight + greenHeight + orangeHeight + yellowHeight) {
           _tabController.animateTo(3);
         } else {}
       }
