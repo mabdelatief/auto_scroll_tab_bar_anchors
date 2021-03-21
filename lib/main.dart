@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/rendering.dart';
-import 'package:pinned/rest.dart';
+import 'package:pinned/home_page.dart';
 void main() {
   runApp(MyApp());
 }
