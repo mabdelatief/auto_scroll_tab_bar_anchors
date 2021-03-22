@@ -34,12 +34,12 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 
 
 
-class HomePage extends StatefulWidget {
+class SliversExample extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _SliversExampleState createState() => _SliversExampleState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _SliversExampleState extends State<SliversExample> with TickerProviderStateMixin {
   final greenKey = new GlobalKey();
   final blueKey = new GlobalKey();
   final orangeKey = new GlobalKey();

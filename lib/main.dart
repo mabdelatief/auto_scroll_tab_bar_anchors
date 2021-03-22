@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/rendering.dart';
-import 'package:pinned/home_page.dart';
+import 'package:pinned/Hard_Example_Sliver.dart';
 void main() {
   runApp(MyApp());
 }
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: SliversExample(),
     );
   }
 }
